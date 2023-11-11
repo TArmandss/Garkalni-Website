@@ -1,0 +1,126 @@
+.gift-cards-section{
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #F5F5F5;
+    border-top: .1px solid rgb(208, 208, 208);
+    z-index: 3;
+}
+.gift-cards-section::after{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: " ";
+    top: 0;
+    left: 0;
+    opacity: .06;
+    background: url('../../../public/assets/images/backround.png');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: 3;
+
+}
+.gift-card-photo-section{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+}
+.gift-card-photo{
+    position: relative;
+    width: 70%;
+    height: 70%;
+    background: url('../../../public/assets/images/gift-card-original.jpeg') no-repeat; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: 10;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+/* .gift-card-photo::after{
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #1717174b;
+} */
+
+.gift-card-description{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 70px;
+    z-index: 10;
+
+
+}
+
+.gift-card-description h1{
+    font-family: "Founders Grotesk Bold",sans-serif;
+    text-transform: uppercase;
+    color: #171717;
+    font-size: 40px;
+    line-height: 80px; 
+       z-index: 10;
+
+}
+.gift-card-description h1 span{
+  position: relative;
+  font-family: "Founders Grotesk Bold",sans-serif;
+  text-transform: uppercase;
+  color: #171717;
+  font-size: 40px;
+
+}
+.gift-card-description h1 span::after {
+    position: absolute;
+    content: " ";
+    width: 100%;
+    height: 10px;
+    background-image: url("https://www.beyondcss.dev/underline.svg");
+    background-position: center;
+    bottom: 0;
+    left: 0;
+    
+    /* Change the color of the background image using hue-rotate */
+    filter: hue-rotate(120deg); /* Adjust the degree value as needed */
+}
+.gift-card-description p{
+    width: 90%;
+    color: #171717;
+    font-size: 14px;
+    text-align: center;
+    z-index: 10;
+    line-height: 22px;
+
+}
+/* 
+.gift-cards-section h5{
+    width: 70%;
+    line-height: 190px;
+    position: absolute;
+    z-index: 8;
+    font-size: 250px;
+    color:rgb(245, 245, 245);
+    text-shadow: 2px 2px #ffffff;
+
+}
+
+.gift-cards-section h5 span{
+  margin-left: 120px;
+
+} */

@@ -1,0 +1,154 @@
+
+.location-content{
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    background: url('../../../public/assets/images/backround.png') no-repeat fixed center ; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+
+}
+.location-content::after{
+    width: 100%;
+    height: 100%;
+   position: absolute;
+   content: " ";
+   left: 0;
+   top: 0;
+   background: #171717c3;
+}
+.location-section{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+.maps{
+    border-radius:15px ;
+
+}
+.location-left-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.location-left-content p{
+  color: white;
+  z-index: 13;
+  font-size: 12px;
+}
+.location-left-content h1{
+    color: white;
+    z-index: 999;
+    font-family: "Founders Grotesk Bold",sans-serif;
+    font-size: 30px;
+}
+.location-icon{
+    color: white;
+    font-size: 20px;
+}
+
+.custom-popup {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .popup-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .popup-content {
+    font-size: 14px;
+  }
+
+  .triger-location-btn{
+    margin-top: 15px;
+    width: 100px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    color: white;
+    font-size: 15px;
+    z-index: 999;
+  
+    transition: all .3s ease-in-out;
+
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border: .1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  
+
+
+
+
+
+
+
+  .triger-location-btn span {
+    width: 100%;
+    z-index: 5;
+    position: relative;
+    transition: color 350ms ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .triger-location-btn:hover span{
+    color: white;
+  }
+  
+  .triger-location-btn::after, .triger-location-btn::before{
+    content: " ";
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: #31572c;
+    z-index: -1;
+  }
+  
+  .triger-location-btn::before {
+    transform: translateX(-100%);
+    z-index: 1;
+  }
+  
+  .triger-location-btn:hover:before {
+    transform: translateX(0);
+    transition: transform 350ms ease;
+  }
+  
+ .triger-location-btn::after {
+     z-index: 0;
+    transform: translateX(100%);
+    transition: none;
+    transition: transform 350ms ease;
+  }
+  
+  .triger-location-btn:hover:after {
+    opacity: 1;
+    transform: translateX(0);
+   transition: transform 350ms 360ms ease;
+  }
