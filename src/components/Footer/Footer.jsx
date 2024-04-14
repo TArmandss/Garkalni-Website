@@ -123,7 +123,7 @@ function Footer() {
      </div>
     </div>
      <div className="bottom-section-footer">
-      <h1>© 2023, Atpūtas vieta Garkalni</h1>
+      <h1>© 2024, Atpūtas vieta Garkalni</h1>
      </div>
     </div>
   )

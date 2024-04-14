@@ -6,14 +6,25 @@ import { useEffect } from 'react';
 
 function App() {
 
-  useEffect(()=>{
-    // Check if the current scroll position is not at the top
-    if (window.scrollY !== 0) {
-        // Scroll to the top of the page
-        window.scrollTo(0, 0);
-    }
+//   useEffect(()=>{
+//     // Check if the current scroll position is not at the top
+//     if (window.scrollY !== 0) {
+//         // Scroll to the top of the page
+//         window.scrollTo(0, 0);
+//     }
 
-})
+// })
+
+  // useEffect(()=>{
+
+    
+  //   document.title=`Garkalni |`
+
+  //   return function (){
+  //     document.title = "Garkalni"
+  //   }
+
+  // },[])
 
   return (
     <div>

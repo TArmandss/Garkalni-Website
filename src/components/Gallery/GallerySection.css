@@ -1,75 +1,69 @@
-
-.gallery-section-layout{
-    width: 100%;
-    height: auto;
-    background: #F5F5F5;
-    position: relative;
-
+.gallery-section-layout {
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+  position: relative;
 }
 
-
-
-.gallery-section-title::after{
-    position: absolute;
-    content: " ";
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: #171717ec;
-
+.gallery-section-title::after {
+  position: absolute;
+  content: " ";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #171717ec;
 }
 
-img{
-    position: relative;
-    width: 300px;
-    height: 300px;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    border-radius: 15px;
-  
+img {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-radius: 15px;
 }
 
 .image-container {
-    position: relative;
-    width: 300px;
-    height: 300px;
-    border-radius: 15px;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-    transition: all .3s ease-in-out;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  transition: all 0.3s ease-in-out;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .image-container:hover::after {
-    transition: all .3s ease-in-out;
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background: #31572c84;
-    border-radius: 15px;
-    pointer-events: none; /* Allow clicks to pass through to the image */
+  transition: all 0.3s ease-in-out;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #31572c84;
+  border-radius: 15px;
+  pointer-events: none; /* Allow clicks to pass through to the image */
 }
-.gallery-section__images{
-    position: relative;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    gap:10px;
+.gallery-section__images {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  gap: 10px;
 }
 /* .play-btn{
     z-index: 100;
@@ -78,27 +72,28 @@ img{
     margin-left: 30px;
     cursor: pointer;
 } */
-.gallery-section-title{
-    padding: 20px 0px;
-    position: relative;
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-      background: url('../../../public/assets/images/backround.png') no-repeat center center fixed; 
+.gallery-section-title {
+  padding: 20px 0px;
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("../../../public/assets/images/backround.png") no-repeat
+    center center fixed;
 
-     -webkit-background-size: cover;
-     -moz-background-size: cover;
-     -o-background-size: cover;
-     background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
-.gallery-section-title h1{
-    color: white;
-    font-size: 60px;
-    z-index: 14;
-    font-family: "Founders Grotesk Bold",sans-serif;
+.gallery-section-title h1 {
+  color: white;
+  font-size: 60px;
+  z-index: 14;
+  font-family: "Founders Grotesk Bold", sans-serif;
 }
 
 /* 
@@ -110,36 +105,35 @@ img{
     font-size: 20px;
     z-index: 999;
 } */
-.select-gallery__type{
-    position: relative;
-    z-index: 55;
-    width: 80%;
-    text-align: center;
-    line-height: 40px;
-   
+.select-gallery__type {
+  position: relative;
+  z-index: 55;
+  width: 80%;
+ text-align: center;
+  line-height: 40px;
 }
-.select-gallery__type button{
-    margin-left: 10px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 15px;
-    background: none;
-    color: whitesmoke;
-    font-size: 12px;
-    cursor: pointer;
-    transition: all .3s ease-in-out;
-    z-index: -1;
 
+.select-gallery__type button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 15px;
+  background: none;
+  color: whitesmoke;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
 }
-.select-gallery__type button.active{
-    background: whitesmoke;
-    color: #171717;
+.select-gallery__type button.active {
+  background: whitesmoke;
+  color: #171717;
 }
-.select-gallery__type button:hover{
-   background: rgba(245, 245, 245, 0.09);
-   transition: all .3s ease-in-out;
+.select-gallery__type button:hover {
+  background: rgba(245, 245, 245, 0.09);
+  transition: all 0.3s ease-in-out;
 }
-.select-gallery__type button.active:hover{
-    background: whitesmoke;
-    color: #171717;
+.select-gallery__type button.active:hover {
+  background: whitesmoke;
+  color: #171717;
 }

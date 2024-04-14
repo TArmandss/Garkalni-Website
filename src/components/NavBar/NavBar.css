@@ -1,165 +1,201 @@
-.nav{
-    z-index: 9999;
-    width: 100%;
-    height: 20vh;
-   
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 40px;
-    transition: all .3s ease-in-out;
-     background: transparent;
-     position: fixed;
+.nav {
+  position: relative;
+  z-index: 9999;
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
 }
-.changed-nav{
-    transition: all .3s ease-in-out;
-    z-index: 9999;
-    width: 100%;
-    height: 10vh;
-    top: 0;
-    background: #31572c;
-    color: white;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    padding-right: 40px; 
-    position: fixed;
 
+.changed-nav {
+  transition: all 0.3s ease-in-out;
+  z-index: 999;
+  width: 100%;
+  height: 10vh;
+  transition-delay: 0.1s;
+  top: 0;
+  background: #31572c;
+  color: white;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 40px;
+  position: fixed;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .navbar-right-side {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
- .nav ul{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.nav ul {
+  position: relative;
+  width: 800px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav ul li {
+  color: white;
+  text-decoration: none;
+  font-size: 11px;
+  font-family: "Founders Grotesk Regular", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-end;
+  align-self: center;
+  cursor: pointer;
+}
+.changed-nav ul {
+  position: relative;
+  width: 800px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 
+  justify-content: flex-end;
+  align-items: center;
 }
-.changed-nav ul{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.nav li {
+  display: flex;
+  margin: 2rem;
 }
- .nav li{
-    display: flex;
-    margin: 2rem;
-
-}
-.changed-nav li{
-    display: flex;
-    margin: 2rem;
-   
-
-}
- .nav ul li a{
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-    font-family: "Founders Grotesk Regular",sans-serif;
-
-}
-
-.changed-nav ul li a:link{
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-    font-family: "Founders Grotesk Regular",sans-serif;
+.changed-nav li {
+  display: flex;
+  margin: 2rem;
 }
 
- .nav ul button{
-    width: 40px;
-    height: 40px;
-    margin-left: 20px;
-    /* background: #31572c; */
-    background: transparent;
-    font-size: 14px;
+.nav ul button {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  /* background: #31572c; */
+  background: transparent;
+  font-size: 14px;
 
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    color: white;
-
-}
-.menu{
-    display: none;
-}
-.changed-nav ul button{
-    width: 40px;
-    height: 40px;
-    margin-left: 20px;
-    /* background: #31572c; */
-    background: transparent;
-    font-size: 14px;
-
-    border: none;
-    outline: none;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    color: white;
-
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
 }
 
-.navbar-left-side{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    /* background: firebrick; */
-    justify-content: flex-start;
-    align-items: center;
-}
-.menu{
-    color: white;
-    font-size: 40px;
-    margin-left: 50px;
+.changed-nav ul button {
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  /* background: #31572c; */
+  background: transparent;
+  font-size: 14px;
 
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
 }
+
 /* .changed-nav , .nav ul li a:hover{
     color: #31572c;
     transition: all .3s ease-in-out;
 }
  */
+.changed-nav ul li {
+  color: white;
+  text-decoration: none;
+  font-size: 11px;
+  font-family: "Founders Grotesk Regular", sans-serif;
+}
 
+/* Add a specific style for the a elements within changed-nav */
+.changed-nav ul li a:link,
+.changed-nav ul li a:visited {
+  color: white;
+}
 
-   /*RESPONSINESS-------------*/
+/* Add a specific style for the a elements within changed-nav on hover */
+.changed-nav ul li a:hover,
+.changed-nav ul li a:active {
+  color: white;
+  /* Add any additional hover styles if needed */
+}
 
-   @media (max-width: 931px) {
-   
-  
-    .menu {
-      font-size: 30px; /* Adjust font size for smaller screens */
-      display: block;
-      cursor: pointer;
-    }
-  
-    .nav ul li, .changed-nav ul li {
-        display: none;
+select {
+  background: transparent;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+.logo,
+.logoh1 {
+  display: none;
+}
 
-    }
-  
-    .nav ul button, .changed-nav ul button {
-      display: none;
-    }
+/*RESPONSINESS-------------*/
+
+@media (max-width: 931px) {
+  .menu {
+    position: fixed;
+    color: white;
+    font-size: 35px;
+    z-index: 9999;
+    left: 30px;
+    display: flex;
+    justify-self: center;
+    cursor: pointer;
+    /* left: 50px;
+    top: 30px; */
+  }
+  .changed-nav .logo {
+    display: block;
+    width: 65px;
+    height: 50px;
+    position: absolute;
+    overflow: hidden;
+    right: 20px;
+    background: url("../../../public/assets/images/logo.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    z-index: 999;
+  }
+  .changed-nav .logoh1 {
+    display: block;
+    position: absolute;
+    font-size: 20px;
+    color: white;
+    left: 40%;
   }
 
+  .changed-nav,
+  .nav {
+    overflow: hidden;
+  }
+  .nav ul li,
+  .changed-nav ul li {
+    display: none;
+  }
 
-    /*RESPONSINESS-------------*/
+  .nav ul button,
+  .changed-nav ul button {
+    display: none;
+  }
+}
+
+/*RESPONSINESS-------------*/

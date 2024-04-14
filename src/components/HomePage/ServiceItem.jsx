@@ -16,6 +16,7 @@ function ServiceItem({ image, title, index, description, setBackground, setIsAct
     }));
     setIsActive(true);
     setHideBtnSection(false)
+    
   };
 
   return (

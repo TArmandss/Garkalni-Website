@@ -1,60 +1,67 @@
-.gallery-section{
-    position: relative;
-   width: 100%;
-   height: 20vh;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   background: url('../../../public/assets/images/backround.png') no-repeat fixed center ; 
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
-   z-index: 3;
+.gallery-section {
+  position: relative;
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../../../public/assets/images/backround.png") no-repeat fixed
+    center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: 3;
 }
-.gallery-section::after{
-    width: 100%;
-    height: 100%;
-   position: absolute;
-   content: " ";
-   left: 0;
-   top: 0;
-   background: #171717d9;
+.gallery-section::after {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  content: " ";
+  left: 0;
+  top: 0;
+  background: #171717d9;
 }
-.gallery-title-section{
-    position: relative;
-    width: 55%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    align-content: center;
-    font-family: "Founders Grotesk Bold",sans-serif;
+.gallery-title-section {
+  position: relative;
+  width: 55%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  font-family: "Founders Grotesk Bold", sans-serif;
 }
-.gallery-title-section h1{
-    position: relative;
-    border-right: .1px solid #c2c2c2;
-    padding: 0 20px;
-    color: white;
-    z-index: 99;
-    font-family: "Founders Grotesk Bold",sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+
+.gallery-title-section .Button {
+  font-size: 13px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  color: white;
+  z-index: 99;
+  padding: 20px 0px;
+  text-decoration: none;
 }
-.gallery-title-section .Button{
-    padding: 10px 15px;
-    margin-left: 20px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 5px;
-    background: transparent;
-    border:none;
-    color: white;
-    z-index: 99;
-    padding: 20px 0px;
-    text-decoration: none;
+
+.gallery-title-section h1 {
+  position: relative;
+  width: 200px;
+  height: 100%;
+  font-size: 30px;
+  top: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: white;
+  z-index: 99;
+  margin: 0;
+  padding: 0;
+  font-family: "Founders Grotesk Bold", sans-serif;
 }

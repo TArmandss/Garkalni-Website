@@ -1,22 +1,21 @@
-import React, { useEffect,useState } from 'react'
-import './NavBar.css'
-import { IoIosArrowDown } from 'react-icons/io'
-import { BiMenuAltLeft } from 'react-icons/bi'
-import { motion } from "framer-motion"
-import { Link } from 'react-scroll';
-import { NavLink } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import "./NavBar.css";
+import { IoIosArrowDown } from "react-icons/io";
+import { BiMenuAltLeft } from "react-icons/bi";
+import { motion } from "framer-motion";
+import { Link } from "react-scroll";
+import { NavLink } from "react-router-dom";
 
-function NavBar({onResponsiveNavBar}) {
-
-  const [navBarDiv , setNavBarDiv] = useState("nav")
-  const [hamburgerMenuPopUp , setHamburgerMenuPopUp] = useState(false);
+function NavBar({ onResponsiveNavBar }) {
+  const [navBarDiv, setNavBarDiv] = useState("nav");
+  const [hamburgerMenuPopUp, setHamburgerMenuPopUp] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 931) {
-        setHamburgerMenuPopUp(true)
-      } else if(window.innerWidth > 931){
-        setHamburgerMenuPopUp(false)
+        setHamburgerMenuPopUp(true);
+      } else if (window.innerWidth > 931) {
+        setHamburgerMenuPopUp(false);
       }
     };
 
@@ -24,28 +23,24 @@ function NavBar({onResponsiveNavBar}) {
     handleResize();
 
     // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Clean up event listener when component unmounts
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-
-
- 
   const slideInNavigationBarHandler = (value) => {
-    onResponsiveNavBar(value => !value)
+    onResponsiveNavBar((value) => !value);
   };
-
 
   useEffect(() => {
     const navBarHanler = () => {
-      if (window.scrollY > 10) {
-        setNavBarDiv("changed-nav")
-      }else{
-        setNavBarDiv("nav")
+      if (window.scrollY > 29) {
+        setNavBarDiv("changed-nav");
+      } else {
+        setNavBarDiv("nav");
       }
     };
 
@@ -54,83 +49,109 @@ function NavBar({onResponsiveNavBar}) {
     return () => {
       window.removeEventListener("scroll", navBarHanler);
     };
-  }, []);
+  }, []); // By adding window.scrollY dependency the performance of the app is slowing down
 
   return (
     <motion.div
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ type: 'just', duration: 0.4, delay: 0.2 }}
+      transition={{ type: "just", duration: 0.4, delay: 0.2 }}
       className={navBarDiv} // Add className attribute here
     >
-      <div className="navbar-left-side">
-        {hamburgerMenuPopUp && 
-        <div className="menu" onClick={slideInNavigationBarHandler}><BiMenuAltLeft/></div>
-        }
-        
-      </div>
+      {hamburgerMenuPopUp && (
+        <>
+          <div className="menu" onClick={slideInNavigationBarHandler}>
+            <BiMenuAltLeft />
+          </div>
+          <div className="logo"></div>
+          <h1 className="logoh1">Garkalni</h1>
+        </>
+      )}
+
       <nav>
         <ul>
           <li>
-            <Link to="price"
+            <Link
+              to="price"
               activeClass="active"
               spy={true}
               smooth={true}
               offset={-50} // Adjust the offset based on your layout
-              duration={700}>
-              <a href="">CENAS</a>
+              duration={700}
+            >
+              CENAS
             </Link>
           </li>
 
           <li>
-            <NavLink to="/gallery">
-              <a href="">GALERIJA</a>
+            <NavLink
+              to="/gallery"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              GALERIJA
             </NavLink>
           </li>
           <li>
-            <Link to="location"
+            <Link
+              to="location"
               activeClass="active"
               spy={true}
               smooth={true}
               offset={-200} // Adjust the offset based on your layout
-              duration={700}>
-              <a href="">ATRAŠANĀS VIETA</a>
+              duration={700}
+            >
+              ATRAŠANĀS VIETA
             </Link>
           </li>
           <li>
-            <Link to="gift-cards"
+            <Link
+              to="gift-cards"
               activeClass="active"
               spy={true}
               smooth={true}
               offset={-100} // Adjust the offset based on your layout
-              duration={700}>
-              <a href="">DĀVANU KARTES</a>
+              duration={700}
+            >
+              DĀVANU KARTES
             </Link>
           </li>
           <li>
-            <Link to="contacts"
+            <Link
+              to="contacts"
               activeClass="active"
               spy={true}
               smooth={true}
               offset={-70} // Adjust the offset based on your layout
-              duration={700}>
-            
-              <a href="">KONTAKTI</a>
+              duration={700}
+            >
+              KONTAKTI
             </Link>
           </li>
           <li>
-            <Link to="contacts"
+            <Link
+              to="contacts"
               activeClass="active"
               spy={true}
               smooth={true}
               offset={-70} // Adjust the offset based on your layout
-              duration={700}>
-              <a href="">DARBA LAIKS</a>
+              duration={700}
+            >
+              DARBA LAIKS
             </Link>
           </li>
-          {/* <button>
-            LV <IoIosArrowDown />
-          </button> */}
+          <li>
+            <select>
+              <option value="">
+                LV <IoIosArrowDown />
+              </option>
+              <option value="">
+                EN <IoIosArrowDown />
+              </option>
+              <option value="">
+                RU <IoIosArrowDown />
+              </option>
+            </select>
+          </li>
         </ul>
       </nav>
     </motion.div>
