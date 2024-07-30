@@ -1,345 +1,67 @@
-.all-services-main-content {
-  position: relative;
-  width: 100%;
-  padding-bottom: 10rem;
-  margin-bottom: 400px;
-  background: var(--text-color-second);
-  border-bottom-left-radius: 5em;
-  border-bottom-right-radius: 5em;
-  z-index: 2;
-}
-.services_content {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  margin-inline: auto;
-  background: #171717;
-  border-bottom-left-radius: 5em;
-  border-bottom-right-radius: 5em;
-}
-
-.back-home-icon {
-  font-size: 1.7rem;
-}
-.top-picture {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 80vh;
-  width: 100%;
-  background: url("../../../public/assets/garkalni-gallery/piknikavieta_1.jpeg");
-  -webkit-background-size: cover; /* Scale the background image to cover the entire container */
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the background image */
-}
-.all-top-section .services_title {
-  color: white;
-  z-index: 999;
-  display: flex;
-  flex-direction: row;
-  width: 90%;
-  gap: 1rem;
-  position: relative;
-  font-family: var(--main-font-family);
-  top: 70px;
-  font-size: clamp(2rem, 1.4vw, 1.4vw);
-  white-space: nowrap;
-}
-.top-picture::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 90vh;
-  content: " ";
-  background: linear-gradient(to top, #171717, transparent);
-}
-/* .noise-bg-content_services{
-  background: url("../../../public/assets/images/grainbg.jpg");
-  z-index: 9999;
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-} */
-.all-services-main-content::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  content: " ";
-  background: linear-gradient(to top, #171717, transparent);
-  z-index: 1;
-  border-bottom-left-radius: 5em;
-  border-bottom-right-radius: 5em;
-}
-@media (max-width: 708px) {
-  .all-top-section h1 {
-    font-size: 1.8rem !important;
-  }
-}
-.all-top-section h1 span {
-  width: 100% !important;
-}
-.all-main-section {
-  position: relative;
-  margin-inline: auto;
-  display: flex;
-  width: 80%;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5rem;
-  margin-top: 320px;
-  padding: 2rem;
-  background: url("../../../public/assets/images/grainbg.jpg");
-
-  padding-bottom: 10rem;
-  border-radius: 5em;
-  z-index: 12;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-.all-main-section::after {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: " ";
-  background: #e8e1dae2;
-  border-radius: 5em;
-
-  z-index: 11;
-}
-.all-items {
-  -webkit-background-size: cover; /* Scale the background image to cover the entire container */
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-repeat: no-repeat; /* Do not repeat the background image */
-  background-position: center;
-  position: relative;
-  width: 100%; /* Adjusted width */
-  height: 60vh; /* Adjusted height */
-
-  object-fit: cover;
-  border-radius: 1.2em;
-  -webkit-background-size: cover; /* Scale the background image to cover the entire container */
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-repeat: no-repeat; /* Do not repeat the background image */
-  background-position: center;
-}
-
-.service-info_img {
-  position: relative;
-  width: 100%; /* Adjusted width */
-  height: 100%; /* Adjusted height */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  -webkit-background-size: cover; /* Scale the background image to cover the entire container */
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-repeat: no-repeat; /* Do not repeat the background image */
-  background-position: center;
-}
-
-.service-info_top-content {
-  width: 60vw;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-.service-info_top-content h1 {
-  font-family: var(--main-font-family);
-  font-size: clamp(2rem, 1.4vw, 1.4vw);
-}
-.service-info_top-content p {
-  font-family: var(--secondary-font-family);
-  font-size: clamp(1.5rem, 0.9vw, 0.9vw);
-  margin-top: 2rem;
-  line-height: 1.8;
-}
-
-.logo-bgone1 {
-  position: absolute;
-  background: url("../../../public/assets/images/logo.png");
-  -webkit-background-size: cover; /* Scale the background image to cover the entire container */
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: 100%;
-  width: 16rem;
-  height: 12rem;
-  top: 2rem;
-  right: 0rem;
-  z-index: 9999;
-
-  background-position: center; /* Center the background image */
-  background-repeat: no-repeat; /* Do not repeat the background image */
-}
-
-@media (width > 1400px) {
-  .all-services-main-content {
-    margin-bottom: 50rem;
-  }
-  .inner-wrap h1 {
-    font-size: clamp(1.2rem, 2.3vw, 2.3vw) !important;
-  }
-}
-@media (max-width: 645px) {
-  .gallery-section {
-    position: relative;
-    width: 90% !important;
-    height: 50vh !important;
-
-    border-radius: 1em;
-  }
-  .inner-wrap h1 {
-    font-size: clamp(2.5rem, 4.5vw, 4.5vw) !important;
-  }
-}
-
-/* General styling for the gallery section */
 .gallery-section {
   position: relative;
-  width: clamp(55rem, 55%, 55%);
-  height: 60vh; /* Full viewport height */
-  border-radius: 1em;
-}
-
-/* Styling for the wrapping element */
-.wrap {
-  position: relative;
-  width: 100%; /* Adjust width as needed */
-  height: 100%; /* Adjust height as needed */
+  width: 100%;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: url("../../../public/assets/images/backround.png") no-repeat fixed
+    center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: 3;
 }
-
-/* Styling for the inner wrapper */
-.inner-wrap {
-  position: relative;
+.gallery-section::after {
   width: 100%;
   height: 100%;
+  position: absolute;
+  content: " ";
+  left: 0;
+  top: 0;
+  background: #171717d9;
+}
+.gallery-title-section {
+  position: relative;
+  width: 55%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  font-family: "Founders Grotesk Bold", sans-serif;
+}
+
+.gallery-title-section .Button {
+  font-size: 13px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  color: white;
+  z-index: 99;
+  padding: 20px 0px;
+  text-decoration: none;
+}
+
+.gallery-title-section h1 {
+  position: relative;
+  width: 200px;
+  height: 100%;
+  font-size: 30px;
+  top: 40%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  text-align: center;
-  cursor: pointer;
-  border-radius: 1em;
-  overflow: hidden;
-}
-.inner-wrap::after {
-  position: absolute;
-  content: " ";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #1717178a;
-}
-.wrap:hover .img {
-  transform: scale(1.2);
-  transition: all 0.3s ease-in-out;
-  border-radius: 1em;
-}
-/* Styling for the image */
-.img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1; /* Place the image behind other content */
-  transition: all 0.3s ease-in-out;
-  border-radius: 1em;
-  transform: scale(1);
-}
-.inner-wrap .img::after {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  content: " ";
-  left: 0;
-  right: 0;
-  background: #1717177f;
-  border-radius: 1em;
-}
-
-/* Styling for the heading */
-.inner-wrap h1 {
-  font-size: 3rem; /* Adjust as needed */
-  color: #fff; /* Assuming white text */
-  font-family: var(--main-font-family); /* Ensure this font is imported */
+  color: white;
+  z-index: 99;
   margin: 0;
-  z-index: 1;
-  position: absolute;
-  bottom: 7%;
-  left: 5%;
-}
-
-/* Styling for the progress bar */
-.progress-bar {
-  position: absolute;
-  bottom: 0%; /* Adjust as needed */
-  width: 70%; /* Adjust as needed */
-  height: 5px; /* Adjust as needed */
-  background: var(--color-green);
-  animation: progress-animation 4s linear infinite;
-  z-index: 1;
-  left: 0;
-}
-
-/* Keyframes for progress bar animation */
-@keyframes progress-animation {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-
-/* Styling for the check text */
-.check-txt {
-  position: absolute;
-  bottom: 10%; /* Adjust as needed */
-  font-size: 1.2rem; /* Adjust as needed */
-  color: #fff; /* Assuming white text */
-  display: flex;
-  align-items: center;
-  z-index: 1;
-  right: -30%;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Styling for the arrows */
-.arrow {
-  position: absolute;
-  top: 5%; /* Adjust as needed */
-  right: -3.5%; /* Adjust as needed */
-  color: #fff; /* Assuming white color */
-  border-radius: 10px;
-  background: var(--color-green);
-  width: 6rem;
-  height: 6rem;
-  padding: 1rem;
-  z-index: 12;
-}
-
-.arrow-right {
-  font-size: 1.2rem; /* Adjust as needed */
-  margin-left: 0.5rem; /* Adjust as needed */
-}
-
-/* Hover effect to show the text */
-.inner-wrap:hover .check-txt {
-  transition: all 0.3s ease-in-out;
-  right: 3%;
+  padding: 0;
+  font-family: "Founders Grotesk Bold", sans-serif;
 }

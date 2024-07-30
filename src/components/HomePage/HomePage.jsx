@@ -1,438 +1,350 @@
-import React, { useEffect, useState, memo } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./HomePage.css";
-
-// Imports from 3rd partly libraries
 import { motion, AnimatePresence } from "framer-motion";
+import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import { Link } from "react-scroll";
-import { NavLink } from "react-router-dom";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-// ReactJs Icons
-import { AiOutlineInstagram } from "react-icons/ai";
-import { BiLogoFacebook } from "react-icons/bi";
-import { IoIosArrowRoundDown } from "react-icons/io";
-import { SlPresent } from "react-icons/sl";
-
-// Components
-import BackToTopBtn from "../../BackToTopBtn";
-import ServicesGarkalniSection from "../ServicesGarkalniSection/ServicesGarkalniSection.jsx";
+import Marquee from "react-fast-marquee";
+import OfferList from "./OfferList.jsx";
+import { FaAnglesDown } from "react-icons/fa6";
 import NavBar from "../NavBar/NavBar";
+import { GarkalniServices } from "../../services";
+import ServiceItem from "./ServiceItem";
 import AboutSection from "../AboutSection/AboutSection";
+import Location from "../Location/Location";
+import Intro from "../Intro/Intro";
 import Pricing from "../Pricing/Pricing";
 import Footer from "../Footer/Footer";
-import Location from "../Location/Location.jsx";
-import Gallery from "../Gallery/Gallery.jsx";
+import Gallery from "../Gallery/Gallery";
+import BackToTopBtn from "../../BackToTopBtn";
+import GiftCardsSection from "../GiftCards/GiftCards";
+import PopUpNav from "../NavBar/PopUpNav";
 
-// Video Bg
-import videoSource from "../../../src/vid/bgvid.mp4";
+function HomePage() {
+  const [hideBtnSection, setHideBtnSection] = useState(true);
+  const [responsiveNavBar, setResponsiveNavBar] = useState(false);
+  const [servicesButton, setServicesButton] = useState(false);
 
-const Hand = memo(() => (
-  <motion.span
-    key="hand"
-    initial={{ y: "100%" }}
-    animate={{ y: "0%" }}
-    exit={{ y: "-100%" }}
-    transition={{ duration: 0.5, ease: "easeInOut" }}
-    aria-label="Waving Hand"
-  >
-    👋
-  </motion.span>
-));
+  const carousel = useRef();
+  const [offset, setOffset] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [width, setWidth] = useState(0);
+  const [isActive, setIsActive] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const length = GarkalniServices.length;
+  const [background, setBackground] = useState({
+    lv: {
+      background: process.env.PUBLIC_URL,
+      name: "",
+      description: "",
+      price: "",
+      exceptions: "",
+    },
+    en: {
+      background: process.env.PUBLIC_URL,
+      name: "",
+      description: "",
+      price: "",
+      exceptions: "",
+    },
+    rus: {
+      background: process.env.PUBLIC_URL,
+      name: "",
+      description: "",
+      price: "",
+      exceptions: "",
+    },
+  });
 
-const Logo = memo(() => (
-  <motion.div
-    key="logo"
-    initial={{ y: "100%" }}
-    animate={{ y: "0%" }}
-    exit={{ y: "-100%" }}
-    transition={{ duration: 0.5, ease: "easeInOut" }}
-    className="logo-bgone"
-    role="img"
+  useEffect(() => {
+    const handleResize = () => {
+      setServicesButton(window.innerWidth <= 941);
+    };
 
-  >
-  </motion.div>
+    // Initial check and add event listener
+    handleResize();
+    window.addEventListener("resize", handleResize);
 
-));
+    // Clean up the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-function HomePage({
-  showMenuIcon,
-  setShowMenuIcon,
-  menuDisplay,
-  setMenuDisplay,
-}) {
-  const [activeContentIndex, setActiveContentIndex] = useState(0);
-  const [showHand, setShowHand] = useState(true); // State to toggle between hand and logo
-  const [mainNav, setMainNav] = useState(true); // State to toggle between hand and logo
+  const divStyle = {
+    background: `url(${background.lv.background}) no-repeat fixed center / cover`,
+    width: "100%",
+    height: "100%",
+  };
 
-  const InstagramLink =
-    "https://instagram.com/garkalni20?igshid=MzRlODBiNWFlZA==";
-  const FacebookLink = "https://www.facebook.com/atputasvieta.garkalni";
-
- 
-
-  const handleAdditionalInfoClick = (index) => {
-    setActiveContentIndex(index);
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => {
+      // Calculate the next index and ensure it stays within the valid range
+      const newIndex = prevIndex === length - 1 ? 0 : prevIndex + 1;
+      // Calculate the offset based on the newIndex
+      const newOffset = newIndex >= 2 && newIndex <= 9 ? -newIndex * 200 : 0;
+      return newIndex;
+    });
+  };
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => {
+      // Calculate the previous index and ensure it stays within the valid range
+      const newIndex = prevIndex === 0 ? length - 1 : prevIndex - 1;
+      // Calculate the offset based on the newIndex
+      const newOffset = newIndex >= 2 && newIndex <= 9 ? -newIndex * 200 : 0;
+      return newIndex;
+    });
   };
 
   useEffect(() => {
-    let interval;  // Declare interval variable
-  
-    const updateNavAndInterval = () => {
-      const isWideEnough = window.innerWidth <= 755;
-      const isVeryWide = window.innerWidth >= 916;
-  
-      // Update navigation state
-      if (isWideEnough) {
-        setMainNav(true);
-        setShowMenuIcon(false);
-      } else {
-        setMainNav(false);
-        setShowMenuIcon(true);
-      }
-  
-      // Manage interval
-      if (isVeryWide) {
-        // Set a new interval
-        interval = setInterval(() => {
-          setShowHand((prevState) => !prevState);
-        }, 3000);
-      } else {
-        // If the window width is less than 916px, set showHand to true and clear any existing interval
-        setShowHand(true);
-        if (interval) {
-          clearInterval(interval);
-        }
-      }
-    };
-  
-    // Initial setup
-    updateNavAndInterval();
-  
-    // Resize event handler
-    const handleResize = () => {
-      updateNavAndInterval();
-    };
-  
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-  
-    // Cleanup function
-    return () => {
-      // Clear the interval and remove the event listener on unmount
-      if (interval) {
-        clearInterval(interval);
-      }
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []); // Empty dependency array ensures this runs only on mount and unmount
-  
-
+    if (carousel.current) {
+      setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+    }
+  }, [carousel]);
 
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
+    setOffset(() => {
+      // Calculate the offset based on the currentIndex
+      if (currentIndex >= 2 && currentIndex <= 9) {
+        return -currentIndex * 200;
+      } else if (currentIndex === 10) {
+        return -9 * 200; // Stop at index 10
+      } else if (currentIndex === 11) {
+        setCurrentIndex(1); // Go back to index 1 from 11
+        return 0;
+      } else {
+        return 0; // If it's less than 3 or negative, reset offset
+      }
     });
+  }, [currentIndex]);
+  useEffect(() => {
+    // Set the background based on the selected language (in this case, 'lv')
+    setBackground((prevBackground) => ({
+      ...prevBackground,
+      lv: {
+        ...prevBackground.lv,
+        background: process.env.PUBLIC_URL + "/assets/garkalni-gallery/bg1.jpg",
+        name: "Atpūtas vieta GARKALNI",
+        description:
+          "Atpūtas vieta ”Garkalni” piedāvā jautri, aktīvi un ar baudu pavadīt savu brīvo laiku atrodoties pie dabas.",
+      },
+    }));
   }, []);
 
- 
+  if (!Array.isArray(GarkalniServices) || GarkalniServices.length <= 0) {
+    return null;
+  }
+
+  const handleResponsiveNavBar = (value) => {
+    setResponsiveNavBar(value);
+  };
 
   return (
     <>
+      {responsiveNavBar && (
+        <PopUpNav onResponsiveNavBar={handleResponsiveNavBar} />
+      )}
+      {!isLoading === true ? (
+        <Intro setIsLoading={setIsLoading} isLoading={isLoading} />
+      ) : (
+        <>
           <AnimatePresence mode="wait">
-
-      {(window.scrollY > 100 || window.innerWidth <= 755) && (
-        <NavBar
-          className="nav-bar"
-          showMenuIcon={showMenuIcon}
-          setShowMenuIcon={setShowMenuIcon}
-          menuDisplay={menuDisplay}
-          setMenuDisplay={setMenuDisplay}
-          
-        />
-      )}
-      </AnimatePresence>
-
-      {menuDisplay && (
-        <div
-          className="overlay"
-          onClick={() => {
-            setMenuDisplay(false);
-          }}
-        ></div>
-      )}
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{
-          delay: 0.3,
-        }}
-        className="noise-bg-content"
-      >
-        <div className="margin-bottom">
-          <nav className="nav-maain">
-            {!mainNav && (
-              <>
-                <div className="line"></div>
-
-                <ul>
-                  <li>
-                    <Link
-                      to="price"
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={-50} // Adjust the offset based on your layout
-                      duration={700}
-                      className="positive-link"
-                    >
-                      Cenas
-                    </Link>
-                    <Link
-                      to="price"
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={-50} // Adjust the offset based on your layout
-                      duration={700}
-                      className="negative-link"
-                    >
-                      Cenas
-                    </Link>
-                  </li>
-
-                  <li>
-                    <Link
-                      to="/gallery"
-                      style={{ textDecoration: "none" }}
-                      className="positive-link"
-                    >
-                      Pakalpojumi
-                    </Link>
-                    <Link
-                      to="pakalpojumi"
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={-100} // Adjust the offset based on your layout
-                      duration={700}
-                      style={{ textDecoration: "none" }}
-                      className="negative-link"
-                    >
-                      Pakalpojumi
-                    </Link>
-                  </li>
-                  <li>
-                    <NavLink
-                      to="/gallery"
-                      style={{ textDecoration: "none" }}
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={-200} // Adjust the offset based on your layout
-                      duration={700}
-                      className="positive-link"
-                    >
-                      Galerija
-                    </NavLink>
-                    <NavLink
-                      to="/gallery"
-                      style={{ textDecoration: "none" }}
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={-200} // Adjust the offset based on your layout
-                      duration={700}
-                      className="negative-link"
-                    >
-                      Galerija
-                    </NavLink>
-                  </li>
-                  <li>
-                    <Link
-                      to="gift-cards"
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={-100} // Adjust the offset based on your layout
-                      duration={700}
-                      className="positive-link"
-                    >
-                      Papild info
-                    </Link>
-                    <Link
-                      to="location"
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={-170} // Adjust the offset based on your layout
-                      duration={700}
-                      className="negative-link"
-                    >
-                      Papild info
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="location"
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={947} // Adjust the offset based on your layout
-                      duration={700}
-                      className="positive-link"
-                    >
-                      Darba laiks
-                    </Link>
-                    <Link
-                      to="location"
-                      activeClass="active"
-                      spy={true}
-                      smooth={true}
-                      offset={947} // Adjust the offset based on your layout
-                      duration={700}
-                      className="negative-link"
-                    >
-                      Darba laiks
-                    </Link>
-                  </li>
-                </ul>
-              </>
+            {isActive && (
+              <motion.div
+                key={background.lv.name} // Use the name as the key
+                className="expanded-view"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                style={divStyle}
+              ></motion.div>
             )}
-          </nav>
+          </AnimatePresence>
 
-          <div className="main-content">
-            <div className="column">
-              <div className="big-title">
-                <div className="line-1">
-                  <span
-                   
-                  >
-                    ATPŪTAS VIETA
-                  </span>
-
-                  <div className="line-1_welcome-content">
-                    <h1>Čau !</h1>
-
-                    <AnimatePresence mode="wait">
-                      {showHand ? <Hand key='hand'/> : <Logo key='logo'/>}
-                    </AnimatePresence>
-                  </div>
+          <motion.div
+            initial={{ opacity: 0, x: -300 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ type: "tween", duration: 0.5, delay: 0.3 }}
+            className="wrapper"
+            style={{
+              backgroundImage: `url(${background.lv.background}) no-repeat fixed center / cover`,
+            }}
+            width={100}
+            height={100}
+          >
+            <div className="announcement-bar">
+              <Marquee speed={60} gradient={false}>
+                <div className="announcement-bar__item">
+                  <span className="announcement-bar__item__circle"></span>
+                  <p>
+                    <strong>10% atlaide sākot no 6 cilvēkiem</strong>
+                  </p>
                 </div>
-              </div>
-              <div className="header-video">
-                <video src={videoSource} autoPlay loop muted playsInline />
-                <div className="welcome-content">
-                       <Hand key='hand'/> 
-                  </div>
-
-                <div className="video-overlay"></div>
-
-                <div className="h1-box">
-                  <span
-                    
-                  >
-                    GARKALNI
-                  </span>
-
-                  <div className="corner left-top"></div>
-                  <div className="corner right-top"></div>
+                <div className="announcement-bar__item">
+                  <span className="announcement-bar__item__circle"></span>
+                  <p>
+                    <strong>Sliktos laika apstāķļos nestrādājam</strong>
+                  </p>
                 </div>
-              </div>
-              <div className="main-content__socials-section">
-                <a href={InstagramLink} className="socials" target="_blank">
-                  <AiOutlineInstagram />
-                </a>
-                <a href={FacebookLink} className="socials" target="_blank">
-                  <BiLogoFacebook />
-                </a>{" "}
-              </div>
-
-              <div className="down-arrow-text">
-                <h1>UZ LEJU</h1>
-                <IoIosArrowRoundDown className="down-arrow-text_arrow-down" />
-              </div>
+                <div className="announcement-bar__item">
+                  <span className="announcement-bar__item__circle"></span>
+                  <p>
+                    <strong>
+                      Pēdējo cilvēku lielā piedzīvojumu trasē laižam 18:00
+                    </strong>
+                  </p>
+                </div>
+                <div className="announcement-bar__item">
+                  <span className="announcement-bar__item__circle"></span>
+                  <p>
+                    <strong>Sezona: 1. maijs - 15. oktobris</strong>
+                  </p>
+                </div>
+              </Marquee>
             </div>
-          </div>
+
+            <NavBar
+              className="nav-bar"
+              onResponsiveNavBar={handleResponsiveNavBar} // Pass the callback function
+            />
+
+            <div className="main-content">
+              <div
+                className={`${
+                  hideBtnSection ? "left-content-grid" : "changed-layout"
+                }`}
+              >
+                <motion.h1
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1 }}
+                  className={`item-title ${isActive ? "active" : ""}`}
+                >
+                  {background.lv.name}
+                </motion.h1>
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 1.4 }}
+                >
+                  <h1 style={{ fontSize: 14, fontWeight: 400 }}>
+                    {background.lv.description}
+                  </h1>
+                </motion.p>
+
+                {hideBtnSection ? (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.7 }}
+                    className="btn-section"
+                  >
+                    <Link
+                      to="about-us"
+                      className="button"
+                      activeClass="active"
+                      spy={true}
+                      smooth={true}
+                      offset={0}
+                      duration={500}
+                    >
+                      <span>PAR MUMS</span>
+                    </Link>
+                    {servicesButton ? (
+                      <Link
+                        to="about-us"
+                        className="button"
+                        activeClass="active"
+                        spy={true}
+                        smooth={true}
+                        offset={0} // Adjust the offset based on your layout
+                        duration={500}
+                      >
+                        <a>
+                          <span>PAKALPOJUMI</span>
+                        </a>
+                      </Link>
+                    ) : null}
+                  </motion.div>
+                ) : (
+                  " "
+                )}
+              </div>
+
+              {/* <div className="right-content"> */}
+              {/* <motion.div ref={carousel} className="drag-box carousel">
+                  <motion.div
+                    // drag="x"
+                    dragConstraints={{ right: 0, left: -width }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1, x: offset }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                    className="inner-carousel"
+                    style={{ width: `${length * 100}%` }}
+                  >
+                    {GarkalniServices.map((service, index) => (
+                      <ServiceItem
+                        key={index} // Corrected the key attribute here
+                        image={service.language.lv.img}
+                        title={service.language.lv.name}
+                        index={index} // Corrected the index attribute here
+                        setBackground={setBackground}
+                        background={background}
+                        description={service.language.lv.description}
+                        setIsActive={setIsActive}
+                        setCurrentIndex={setCurrentIndex}
+                        currentIndex={currentIndex}
+                        setHideBtnSection={setHideBtnSection}
+                      />
+                    ))}
+                  </motion.div>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="arrows-section"
+                >
+                  <IoIosArrowBack className="arrow-icon" onClick={prevSlide} />
+                  <IoIosArrowForward
+                    className="arrow-icon"
+                    onClick={nextSlide}
+                  />
+                  <span className="line line-one"></span>
+                  <p>{`${currentIndex + 1}`}</p>
+                </motion.div>
+                 */}
+              {/* </div> */}
+            </div>
+          </motion.div>
+          <FaAnglesDown className="mouse" />
 
           <BackToTopBtn />
+          {servicesButton && (
+            <OfferList
+              length={length}
+              setHideBtnSection={setHideBtnSection}
+              offset={offset}
+              setIsActive={setIsActive}
+              setCurrentIndex={setCurrentIndex}
+              currentIndex={currentIndex}
+              carousel={carousel}
+              setBackground={setBackground}
+              background={background}
+              width={width}
+              GarkalniServices={GarkalniServices}
+              nextSlide={nextSlide}
+              prevSlide={prevSlide}
+            />
+          )}
           <AboutSection />
-          <ServicesGarkalniSection
-           
-            menuDisplay={menuDisplay}
-            setMenuDisplay={setMenuDisplay}
-          />
+          <Location />
           <Pricing />
-
-          <div className="grid">
-            <div className="addition-info_top-section">
-              <nav>
-                <ul
-                  onClick={(e) =>
-                    handleAdditionalInfoClick(parseInt(e.target.dataset.index))
-                  }
-                >
-                  <li
-                    className={`map_section ${
-                      activeContentIndex === 0 ? "active-li" : ""
-                    }`}
-                    data-index={0}
-                  >
-                    Atrašanās vieta
-                  </li>
-                  <li
-                    className={`gallery_section ${
-                      activeContentIndex === 1 ? "active-li" : ""
-                    }`}
-                    data-index={1}
-                  >
-                    Galerija
-                  </li>
-                  <li
-                    className={`gift-card_section ${
-                      activeContentIndex === 2 ? "active-li" : ""
-                    }`}
-                    data-index={2}
-                  >
-                    Dāvanu kartes
-                  </li>
-                  <div
-                    className="cover-li"
-                    style={{
-                      transform: `translateX(${activeContentIndex * 100}%)`,
-                    }}
-                  ></div>
-                </ul>
-              </nav>
-            </div>
-            <div className="addition-info_bottom-section">
-              {activeContentIndex === 0 && <Location />}
-              {activeContentIndex === 1 && <Gallery />}
-              {activeContentIndex === 2 && (
-                <div className="gift-cards-grid">
-                  <div className="gift-cards_text">
-                    <h1>
-                      Dāvanu <span>karte</span>
-                    </h1>
-                    <p>
-                      Izbaudiet dāvināšanas prieku ar mūsu daudzpusīgajām un
-                      pārdomātajām dāvanu kartēm.
-                    </p>
-                    <SlPresent className="gift-icon" />
-                  </div>
-                  <div className="gift-cards_img">
-                    <div className="card-img"></div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-
-      <Footer />
+          <Gallery />
+          <GiftCardsSection />
+          <Footer />
+        </>
+      )}
     </>
   );
 }
