@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "@react-google-maps/api": "^2.19.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "aos": "^2.3.4",
+    "embla-carousel-autoplay": "^8.1.0",
+    "embla-carousel-react": "^8.1.0",
     "framer-motion": "^10.13.0",
     "image-js": "^0.35.4",
     "leaflet": "^1.9.4",
@@ -17,11 +21,13 @@
     "react-fast-marquee": "^1.6.0",
     "react-icons": "^4.10.1",
     "react-leaflet": "^4.2.1",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.14.2",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
+    "video-react": "^0.16.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -1,0 +1,24 @@
+{
+    "proseWrap": "always",
+  
+    "overrides": [
+      {
+        "files": "*.js",
+  
+        "options": {
+          "tabWidth": 4,
+  
+          "arrowParens": "avoid",
+  
+          "trailingComma": "none",
+  
+          "singleQuote": true,
+  
+          "printWidth": 100,
+  
+          "quoteProps": "consistent"
+        }
+      }
+    ]
+  }
+  

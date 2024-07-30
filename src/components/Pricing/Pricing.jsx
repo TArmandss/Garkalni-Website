@@ -1,82 +1,108 @@
-import React, { useState } from 'react';
-import './Pricing.css';
-import { GarkalniServices } from '../../services';
-import { motion } from 'framer-motion'
+import React, { useEffect, useRef, useState } from "react";
+import "./Pricing.css";
+import { GarkalniServices } from "../../services";
+import { motion } from "framer-motion";
+import { FaEuroSign } from "react-icons/fa";
+import { FaVolleyballBall } from "react-icons/fa";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 function Pricing() {
+  const [width, setWidth] = useState(0);
+  const carousel = useRef();
+  const [emblaRef] = useEmblaCarousel({ loop: false, align: 'start', skipSnaps: false }, [Autoplay()]);
+
+ useEffect(() => {
+    const updateWidth = () => {
+      if (carousel.current) {
+        setWidth(carousel.current.scrollWidth - carousel.current.offsetWidth);
+      }
+    };
+
+    updateWidth();
+    window.addEventListener('resize', updateWidth);
+
+    AOS.init({ duration: 1000 });
+
+    return () => {
+      window.removeEventListener('resize', updateWidth);
+    };
+  }, []);
+
   function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
 
-  // Find the service with index 1 from the GarkalniServices array
-  const initialService = GarkalniServices.find((service) => service.index === 1);
-
-  const [serviceItem, setServiceItem] = useState({
-    index: initialService.index || 0,
-    name: initialService.language.lv.name,
-    price: initialService.language.lv.price,
-    exceptions: initialService.language.lv.exceptions,
-  });
-
-  const [activeItemIndex, setActiveItemIndex] = useState(1);
-
-  function popUpServicePrice(service) {
-    setServiceItem({
-      index: service.index,
-      name: service.language.lv.name,
-      price: service.language.lv.price,
-      exceptions: service.language.lv.exceptions,
-    });
-    setActiveItemIndex(service.index);
-  }
-
-  // Filter GarkalniServices array to get only the services in Latvian (lv)
-  const lvServices = GarkalniServices.filter((service) => service.language && service.language.lv);
+  const lvServices = GarkalniServices.filter(
+    (service) => service.language && service.language.lv
+  );
 
   return (
-    <div className='pricing-section price'>
-      <div className='pricing-txt'>
-        <h1>PIEDĀVĀJUMI</h1>
-        <p>Cenas</p>
-      </div>
-      <div className='pricing-box'>
-        <div className='left-title-section'>
-        {lvServices.map((service) => (
-  // Check if the service index is not equal to 3 before rendering
-  (service.index !== 3 && service.index !== 11) && (
-    <div
-      className={`pricing-item-title ${activeItemIndex === service.index ? 'active' : ''}`}
-      key={service.index}
-      onClick={() => popUpServicePrice(service)}
-    >
-      <h1>{capitalizeFirstLetter(service.language.lv.name)}</h1>
-    </div>
-  )
-))}
+    <div className="noise-bg-pricing-section">
+      <div className="pricing-section price">
+        <div className="second-row-x">
+          <div className="text-column">
+            <h1>
+              PAKALPOJUMU <br /> CENAS
+            </h1>
+          </div>
+
+          <div className="line-column">
+            {Array.from({ length: 13 }, (_, index) => (
+              <span className="lines" key={index}></span>
+            ))}
+          </div>
         </div>
 
-        <div className='right-pricing-section'>
-          {serviceItem.name && (
-            <motion.div initial={{ x: -100 }} animate={{ x: 0 }} className='service-info'>
-              <h1>{serviceItem.name}</h1>
-              {serviceItem.exceptions && <p>{serviceItem.exceptions}</p>}
-            </motion.div>
-          )}
-          <div className='service-info-below'>
-            {Object.entries(serviceItem.price).map(([key, value]) => (
-              <motion.div initial={{ x: -100, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className='item-box' key={key}>
-                <div className='service-pricing'>
-                  <h1>€{value}</h1>
-                </div>
-                <div className='service-pricing-title'>
-                  <p>{key}</p>
-                </div>
-              </motion.div>
-            ))}
+        <div ref={emblaRef} className="carousel">
+          <div
+            className="inner-carousel"
+            
+          >
+            {lvServices.map(
+              (service) =>
+                service.language.lv.name !== "SAJŪTU TAKA" && (
+                  <motion.li className="carousel-item" key={service.index}>
+                    {service.language.lv.exceptions && (
+                      <p className="service_exception">
+                        {service.language.lv.exceptions}
+                      </p>
+                    )}
+                    <div className="li-wrap">
+                      {service.language.lv.price && (
+                        <div className="pricing_container">
+                          {Object.entries(service.language.lv.price).map(
+                            ([key, value]) => (
+                              <div key={key} className={key ? "price_column" : null}>
+                                <div className="pricing_box">
+                                  <h1>€{value}</h1>
+                                </div>
+                                <p style={{ lineHeight: service.language.lv.name === "MAZĀ KOKU TRASE" || service.language.lv.name === "PIKNIKA VIETA" ? "2" : "2" }}>{key}</p>
+                              </div>
+                            )
+                          )}
+                        </div>
+                      )}
+                      <div className="li-wrap_bottom-content">
+                        <h1 className="service_name">
+                          {capitalizeFirstLetter(service.language.lv.name)}
+                        </h1>
+                        {service.language.lv.icon &&
+                          React.cloneElement(service.language.lv.icon, {
+                            className: "iconss",
+                          })}
+                      </div>
+                    </div>
+                  </motion.li>
+                )
+            )}
           </div>
         </div>
       </div>
     </div>
   );
 }
+
 export default Pricing;

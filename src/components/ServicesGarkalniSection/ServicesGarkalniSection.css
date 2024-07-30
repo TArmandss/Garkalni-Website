@@ -1,0 +1,706 @@
+.services-wrapper {
+  position: relative;
+  width: 90%;
+  height: clamp(800px, 100svh, 100svh);
+
+  display: grid;
+  flex-direction: column;
+  grid-template-rows: 0.5fr 2fr;
+  margin-inline: auto;
+  overflow: hidden;
+  top: -10rem;
+  margin-top: 1rem;
+}
+.first-row-services {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  bottom: 1rem;
+  z-index: 2;
+  gap: 1rem;
+}
+@media (min-height: 947px) and (width < 1500px) {
+  .services-wrapper {
+    top: -13rem !important;
+  }
+}
+@media (width > 1400px) {
+  .services-wrapper {
+    top: -6rem;
+  }
+  .service-info_top-content p {
+    font-family: var(--secondary-font-family);
+    font-size: clamp(1.2rem, 1vw, 1vw) !important;
+    margin-top: 2rem;
+    line-height: 1.8;
+  }
+  .all-top-section {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-inline: auto;
+    top: 183px !important;
+    left: 0rem;
+    position: relative;
+  }
+}
+@media (min-height: 947px) and (width < 1400px) {
+  .noise {
+    max-height: 550px !important;
+  }
+}
+@media (min-height: 947px) and (width < 1088px) {
+  .more-services-button {
+    bottom: 15rem !important;
+  }
+}
+@media (min-height: 947px) and (width < 1400px) {
+  .services-wrapper {
+    position: relative;
+    width: 100%;
+    height: clamp(800px, 100svh, 100svh);
+    display: grid;
+    flex-direction: column;
+    grid-template-rows: 0.5fr 2fr;
+    margin-inline: auto;
+    overflow: hidden;
+
+    margin-top: 0rem;
+  }
+}
+@media (min-height: 947px) and (max-width: 987px) {
+  .services-wrapper {
+    top: -2rem !important;
+  }
+}
+@media (min-height: 947px) and (max-width: 986px) {
+  .services-items-section {
+    padding-left: unset !important;
+  }
+}
+.services-items-section {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0 2rem;
+  width: 100%;
+  height: 100%;
+  font-family: var(--main-font-family);
+}
+.garkalni-text {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  color: var(--text-color-one);
+  z-index: 99;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-family: var(--main-font-family);
+}
+.down-arrow-text_arrow-down {
+  font-size: 2rem;
+}
+
+.first-row-left-section {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.line_services {
+  background: #191919;
+}
+.lines {
+  width: 5%;
+  height: 0.2rem;
+  background: var(--text-color-second);
+}
+.offer-icon {
+  border-radius: 50%;
+  font-size: 5rem;
+  background: var(--text-color-one);
+  padding: 1.5rem;
+  color: var(--colo-green);
+  border: 1px solid #cfcfcfb5;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+}
+.offer-list_line {
+  width: 100%;
+  height: 0.1rem;
+  background: #cfcfcfb5;
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-self: center;
+}
+
+/*IMG section ----------------*/
+
+.service-img-wrapper {
+  position: relative;
+  height: 70%;
+  width: 28%;
+  /*used to be 25vw*/
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  border-radius: 1.2em;
+  overflow: hidden;
+}
+.service-img-wrapper:hover .service-img {
+  transform: translateY(-20px);
+}
+.service-img {
+  position: relative;
+
+  width: 100%;
+  height: 105%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+.service-img:hover {
+  transform: translateY(20px);
+}
+
+.service-img::after {
+  position: absolute;
+  content: " ";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #17171742;
+}
+.right-arrow {
+  font-size: 2vw;
+}
+.services-title {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.services-title h1 {
+  font-size: clamp(2em, 3.5vw, 7.5em);
+  font-family: var(--main-font-family);
+}
+
+.more-services {
+  position: relative;
+  text-transform: uppercase;
+  list-style: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  bottom: 4rem;
+}
+.more-services-button {
+  position: absolute;
+
+  right: 5rem;
+  width: 20rem;
+  height: 5rem;
+  gap: 1rem;
+  top: 6rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  color: var(--text-color-second);
+  font-size: 1.6em;
+  border: none;
+  cursor: pointer;
+  background: none;
+  transition: all 0.3s ease-in-out;
+  z-index: 999999;
+}
+.more-services-button:hover {
+  transform: translateY(-10px);
+  color: rgba(0, 0, 0, 0.62);
+  transition: all 0.3s ease-in-out;
+}
+
+.service-name .initial-btn-txt {
+  font-family: var(--main-font-family);
+  color: var(--text-color-one);
+  font-weight: 800;
+  font-size: 1.5rem;
+
+  background: none;
+  border: none;
+}
+.service-name .negative-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  font-family: var(--main-font-family);
+  color: var(--text-color-one);
+  font-weight: 800;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  transform: translateY(110%);
+}
+
+.text-column-services {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-inline: left;
+}
+.second-row-x h1 {
+  font-size: clamp(3.3em, 3.7vw, 3.7vw);
+  font-family: var(--main-font-family);
+  color: var(--text-color-second);
+  font-weight: 900;
+}
+.text-column-services h1 {
+  font-family: var(--main-font-family);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-self: flex-end;
+  font-size: clamp(3.3em, 3.7vw, 3.7vw);
+  color: #171717;
+  font-weight: 900;
+}
+.service-name button:first-child {
+  transform: translateY(0%);
+  transition: all 0.2s ease-in-out;
+}
+.service-img:hover .service-name button:first-child {
+  transform: translateY(-100%);
+  transition: all 0.2s ease-in-out;
+}
+.service-img:hover .service-name .negative-btn {
+  transform: translateY(0%);
+  transition: all 0.2s ease-in-out;
+}
+
+.service_info {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  z-index: 9999;
+  bottom: 0rem;
+}
+.service-name {
+  position: absolute;
+  min-width: 1em;
+  height: 2em;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+  bottom: 4rem; /* Initially positioned at the bottom */
+  transition: bottom 0.5s ease-in-out; /* Transition the bottom property */
+}
+
+.service-img:hover .service-name {
+  bottom: calc(100% + 0.2rem);
+}
+.pop-up-text {
+  width: 100%;
+  position: relative;
+  font-size: 0.6rem;
+  color: var(--text-color-one);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.5s ease-in-out; /* Only transition transform */
+  transform: translateY(100%); /* Initially positioned below the container */
+}
+
+.service-img:hover .pop-up-text {
+  transition: transform 0.5s ease-in-out; /* Only transition transform */
+
+  transform: translateY(
+    -6%
+  ); /* Move the pop-up text to its original position */
+}
+.pop-up-text h1 {
+  color: var(--text-color-one);
+  font-family: var(--secondary-font-family);
+  font-weight: 300;
+  line-height: 1.4;
+}
+.service-img:hover .service_info {
+  transition: all 0.3s ease-in-out;
+}
+
+.service-img:hover::after {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #138808 20%, transparent);
+  transition: all 3s ease-in-out;
+}
+@media (max-width: 936px) {
+  .service-img:hover .pop-up-text {
+    transition: transform 0.5s ease-in-out; /* Only transition transform */
+
+    transform: translateY(
+      -4%
+    ); /* Move the pop-up text to its original position */
+  }
+}
+@media (max-width: 1087px) {
+  .service-name {
+    position: absolute;
+    min-width: 1em;
+    height: 2em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    bottom: 5rem; /* Initially positioned at the bottom */
+    transition: bottom 0.5s ease-in-out; /* Transition the bottom property */
+  }
+  .service-img:hover .pop-up-text {
+    transition: transform 0.5s ease-in-out;
+    transform: translateY(-2rem);
+  }
+  .service-img:hover .service-name {
+    bottom: calc(100% + 2rem);
+  }
+}
+/* @media (max-width: 653px) {
+  .services-wrapper {
+    position: relative;
+    width: 90%;
+    display: grid;
+    flex-direction: column;
+    grid-template-rows: 0.5fr 2fr;
+    margin-inline: auto;
+    top: unset;
+  }
+} */
+/* @media (max-width: 1088px) {
+ 
+} */
+/* @media (max-width: 653px) {
+  .services-wrapper {
+    position: relative;
+    width: 90%;
+
+    top: 0rem;
+
+    display: grid;
+    flex-direction: column;
+    grid-template-rows: 0.5fr 2fr 0.3fr;
+    margin-inline: auto;
+  }
+} */
+
+@media (max-width: 1088px) {
+  .service-img-wrapper {
+    width: 27vw;
+    height: 65%;
+  }
+  .right-arrow {
+    font-size: 2rem;
+  }
+  .services-items-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 5rem;
+  }
+  .more-services-button {
+    position: absolute;
+
+    right: unset;
+    left: 0rem;
+    width: 20rem;
+    height: 5rem;
+    gap: 1rem;
+    top: unset;
+    bottom: 12rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    outline: none;
+    color: var(--text-color-second);
+    font-size: 1.6em;
+    border: none;
+    cursor: pointer;
+    background: none;
+    transition: all 0.3s ease-in-out;
+  }
+  .service-img {
+    height: 107% !important;
+  }
+  /* .services-items-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }  */
+}
+
+@media (max-width: 936px) {
+  /* .services-wrapper {
+    position: relative;
+    width: 90%;
+    height: clamp(600px, 100svh, 100svh);
+
+    display: grid;
+    flex-direction: column;
+    grid-template-rows: 0.5fr 2fr 0.3fr;
+    margin-inline: auto;
+    top: -12vh;
+    gap: 1rem;
+  } */
+  /* .services-items-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  } */
+  /* .service-img {
+    position: relative;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 85%;
+    min-width: 24rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all 3s ease-in-out;
+    overflow: hidden;
+    border-radius: 1em;
+  }  */
+
+  /* .service-name .initial-btn-txt {
+   
+    font-size: clamp(1.4rem,1.5vw,1.5vw);
+  }
+  .service-name .negative-btn {
+   
+    font-size: clamp(1.4rem,1.5vw,1.5vw);
+   
+  }
+  .pop-up-text {
+   
+    font-size: 0.6rem;
+   
+  }
+  */
+  /* .service-name {
+    padding: .5rem;
+    height: 3em;
+    
+  }  */
+  .services-items-section {
+    gap: unset !important;
+  }
+  .lines {
+    width: 3.5vw;
+    height: 0.2rem;
+  }
+  .service-img-wrapper {
+    width: 30vw;
+    height: 65%;
+  }
+
+  .first-row-services {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    position: relative;
+    gap: 0rem;
+    bottom: 0rem;
+    padding-left: unset;
+  }
+  .more-services {
+    position: absolute;
+
+    height: 10vh;
+    width: 100%;
+    bottom: 2vh;
+  }
+
+  .text-column-services {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-inline: left;
+    width: 100%;
+  }
+  .first-row-left-section {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 986px) {
+  .services-wrapper {
+    top: 0rem;
+  }
+}
+@media (max-width: 624px) {
+  .service-img-wrapper {
+    width: 30rem;
+    height: 65%;
+  }
+}
+@media (max-width: 568px) {
+  .text-column-services h1 {
+    font-family: var(--main-font-family);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: flex-end;
+    font-size: clamp(3em, 6vw, 6vw);
+    color: var(--text-color-second);
+    font-weight: 900;
+  }
+}
+@media (max-width: 660px) {
+  .services-wrapper {
+    top: 0rem;
+    margin-top: unset;
+  }
+}
+@media (max-width: 436px) {
+  .pop-up-text h1 {
+    font-size: clamp(1.1rem, 2.2vw, 2.2vw);
+  }
+}
+
+/*For large sizes*/
+@media (width > 1400px) {
+  .service-img-wrapper {
+    max-width: 42rem;
+    height: 75%;
+  }
+  .services-items-section {
+    gap: 0 4rem;
+  }
+  .service-name .initial-btn-txt {
+    font-size: 2rem;
+  }
+  .service-name .negative-btn {
+    font-size: 2rem;
+  }
+  .service-name {
+    height: 2.5em;
+  }
+  .pop-up-text {
+    font-size: 0.7rem;
+  }
+  .service-name {
+    bottom: 5rem; /* Initially positioned at the bottom */
+  }
+
+  .pop-up-text {
+    padding: 2rem;
+  }
+  .more-services-button {
+    font-size: 2em;
+    right: 10rem;
+  }
+  .right-arrow {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 470px) {
+  .first-row-services {
+    padding-left: 0;
+  }
+  .services-items-section {
+    gap: 0;
+  }
+  .more-services-button {
+    justify-content: unset;
+  }
+}
+
+@media (max-width: 986px) {
+  .services-wrapper {
+    position: relative;
+    width: 100% !important;
+
+    padding-left: 4rem !important;
+  }
+  .services-items-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 5rem;
+    padding-left: unset !important;
+  }
+  .more-services-button {
+    left: 1rem !important;
+  }
+}
+@media (max-width: 660px) {
+  .services-wrapper {
+    padding-left: 5vw !important;
+  }
+}
+
+@media (min-height: 947px) and (width < 1500px) {
+  .services-items-section {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding-top: 5rem;
+  }
+  .more-services-button {
+    right: 7rem;
+  }
+}
+/* @media (min-height: 947px) and (width < 1088px) {
+  .services-items-section {
+   
+    padding-left: 5rem !important;
+  }
+ 
+} */
+@media (min-height: 947px) and (max-width: 1088px) {
+  .more-services-button {
+    left: 2rem;
+    right: 0 !important;
+  }
+  .services-wrapper {
+    position: relative;
+    width: 100% !important;
+    padding-left: 4rem !important;
+  }
+}
